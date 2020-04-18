@@ -20,6 +20,7 @@ set -e
 USER=user
 HOSTNAME=hostname
 SERVER=server
+GLOBAL_EXCLUDE="~/makebackup.excludes"
 
 KEEP_DAILY=14
 KEEP_WEEKLY=3
@@ -47,7 +48,7 @@ sudo paccheck --md5sum --quiet --db-files --noupgrade --backup | awk '{ print $2
 grep -v -x -f /tmp/restic-backup.changed_files /tmp/restic-backup.pkg_files | sed 's/\[/\\[/g' > /tmp/restic-backup.blacklist
 
 # add the global exclude list to the black list
-cat ~/makebackup.excludes >> /tmp/restic-backup.blacklist
+cat "$GLOBAL_EXCLUDE" >> /tmp/restic-backup.blacklist
 echo "$CACHEDIR" >> /tmp/restic-backup.blacklist
 
 echo "Generating package lists..."
