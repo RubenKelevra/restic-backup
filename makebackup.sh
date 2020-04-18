@@ -64,4 +64,8 @@ restic -r sftp:$server:/home/$user/backups/$hostname --cache-dir="$cachdir" forg
 
 sudo setcap cap_dac_read_search=-ep /usr/bin/restic
 
+rm -f /tmp/pkg_files 2>/dev/null || true
+rm -f /tmp/changed_files 2>/dev/null || true
+rm -f /tmp/blacklist 2>/dev/null || true
+
 echo "Operation completed."
