@@ -48,6 +48,7 @@ grep -v -x -f /tmp/changed_files /tmp/pkg_files | sed 's/\[/\\[/g' > /tmp/blackl
 
 # add the global exclude list to the black list
 cat ~/makebackup.excludes >> /tmp/blacklist
+echo "$CACHEDIR" >> /tmp/blacklist
 
 echo "Generating package lists..."
 
