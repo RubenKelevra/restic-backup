@@ -22,10 +22,10 @@ HOSTNAME=hostname
 SERVER=server
 GLOBAL_EXCLUDE="~/makebackup.excludes"
 
-KEEP_DAILY=14
-KEEP_WEEKLY=3
-KEEP_MONTHLY=5
-KEEP_YEARLY=1
+KEEP_DAILY=62 #two month
+KEEP_WEEKLY=208 # 4 years
+KEEP_MONTHLY=96 # 8 years
+KEEP_YEARLY=99 
 
 # make sure this directory exist and you have write access
 CACHEDIR='/var/cache/restic/'
