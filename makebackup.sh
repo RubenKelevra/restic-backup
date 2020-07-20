@@ -22,6 +22,7 @@ HOSTNAME=hostname
 SERVER=server
 GLOBAL_EXCLUDE="~/makebackup.excludes"
 
+KEEP_WITHIN='48h' #avoid removing latest manual snapshots
 KEEP_DAILY=62 #two month
 KEEP_WEEKLY=208 # 4 years
 KEEP_MONTHLY=96 # 8 years
@@ -61,7 +62,7 @@ echo "Backing up..."
 restic -r sftp:$server:/home/$user/backups/$hostname --verbose --cache-dir="$cachdir" backup / --exclude-file=/tmp/restic-backup.blacklist
 
 echo "Full system-backup done. Forgetting old snapshots..."
-restic -r sftp:$server:/home/$user/backups/$hostname --cache-dir="$cachdir" forget --keep-daily $KEEP_DAILY --keep-weekly $KEEP_WEEKLY --keep-monthly $KEEP_MONTHLY --keep-yearly $KEEP_YEARLY
+restic -r sftp:$server:/home/$user/backups/$hostname --cache-dir="$cachdir" forget --keep-within $KEEP_WITHIN --keep-daily $KEEP_DAILY --keep-weekly $KEEP_WEEKLY --keep-monthly $KEEP_MONTHLY --keep-yearly $KEEP_YEARLY
 
 sudo setcap cap_dac_read_search=-ep /usr/bin/restic
 
