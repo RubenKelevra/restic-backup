@@ -2,7 +2,7 @@
 #
 ########
 #
-# Copyright © 2020 @RubenKelevra
+# Copyright © 2020-2022 @RubenKelevra
 #
 # LICENSE contains the licensing informations
 #
