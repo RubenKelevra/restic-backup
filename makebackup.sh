@@ -37,7 +37,7 @@ sudo setcap cap_dac_read_search=+ep /usr/bin/restic
 echo "Generating exclude lists..."
 
 # fetch all files currently supplied by packages
-rm -f /tmp/pkg_files
+rm -f /tmp/restic-backup.pkg_files
 while IFS= read -r -d $'\n' filepath; do
 	[ -f "$filepath" ] && echo "$filepath" >> /tmp/restic-backup.pkg_files
 done < <(sudo pacman -Ql | cut -f 1 -d ' ' --complement)
